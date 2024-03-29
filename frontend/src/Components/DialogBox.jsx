@@ -37,7 +37,7 @@ export function DialogBox(props) {
         size={size || "md"}
         handler={handleOpen}
       >
-        <DialogHeader>Its a simple dialog.</DialogHeader>
+        <DialogHeader> Are u sure ?</DialogHeader>
         <DialogBody>
           The key to more success is to have a lot of pillows. Put it this way,
           it took me twenty five years to get these plants, twenty five years of

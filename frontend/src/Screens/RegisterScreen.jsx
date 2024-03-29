@@ -46,13 +46,13 @@ function RegisterScreen() {
             setPasword(value)
             const passwordErrors = [];
             if (value.length < 8) {
-            passwordErrors.push('*password must be at least 8 characters long');
+            passwordErrors.push('password must be at least 8 characters long');
             }
             if (!/\d/.test(value)) {
-            passwordErrors.push('*password must contain at least one digit');
+            passwordErrors.push('password must contain at least one digit');
             }
             if (!/[a-z]/.test(value) && !/[A-Z]/.test(value)) {
-            passwordErrors.push('*password must contain at least one letter');
+            passwordErrors.push('password must contain at least one letter');
             }
             if (passwordErrors.length > 0) {
             setErrors((prevErrors) => ({ ...prevErrors, password: passwordErrors.join('\n') }));
@@ -60,11 +60,11 @@ function RegisterScreen() {
         }else if(name=='rePassword'){
             setRepasword(value)
             if(value!==password)
-            setErrors((prevErrors)=>({...prevErrors,[name]:'*both password should be same'}))
+            setErrors((prevErrors)=>({...prevErrors,[name]:'both password should be same'}))
         }else if(name=='name'){
             setName(value)
             if(value.trim()==''){
-                setErrors((prevError)=>({...prevError,name:"*name can't be null"}))
+                setErrors((prevError)=>({...prevError,name:"name can't be null"}))
             }
         }
         
@@ -104,118 +104,120 @@ function RegisterScreen() {
 
   return (
     <FormContainer>
-    <Typography  
-    variant="h3" 
-    color="blue-gray">
+      <Typography variant="h3" color="blue-gray">
         Signup
-    </Typography>
+      </Typography>
 
-    <form className='p-2' onSubmit={handleSubmit}>
-    <div className='max-w-[70%] my-4 mx-auto'>
-            <Input 
+      <form className="p-2" onSubmit={handleSubmit}>
+        <div className="max-w-[70%] my-4 mx-auto">
+          <Input
             onChange={handleInput}
-             label='Your name'
-             size="lg"
-             placeholder="name"
-             name='name'
-             error={errors.name?true:false}
-
-              />
-            {errors.name?(
+            label="Your name"
+            size="lg"
+            placeholder="name"
+            name="name"
+            error={errors.name ? true : false}
+          />
+          {errors.name ? (
             <Typography
-            variant="small"
-            color="red"
-            className="mt-2 flex items-center  gap-1 font-normal"
+              variant="small"
+              color="green"
+              className="mt-2 flex items-center  gap-1 font-normal"
             >
-
-            {errors.name}
+              {errors.name}
             </Typography>
-            ):''}
-             
+          ) : (
+            ""
+          )}
         </div>
 
-        <div className='max-w-[70%] my-4 mx-auto'>
-            <Input
+        <div className="max-w-[70%] my-4 mx-auto">
+          <Input
             onChange={handleInput}
-            type='email'
-             label='email'
-             size="lg"
-             placeholder="example@example.example"
-             name='email'
-             error={errors.email?true:false}
-              />
-            {errors.email?(
-            <Typography
-            variant="small"
-            color="red"
-            className="mt-2 flex items-center  gap-1 font-normal"
-            >
-    
-            {errors.email}
-        </Typography>
-            ):''}
-        </div>
-        <div className='max-w-[70%] my-4 mx-auto'>
-            <Input   
-            onChange={handleInput}
-            label='password ' 
-            type="password" 
+            type="email"
+            label="email"
             size="lg"
-              placeholder="********" 
-              name='password'
-             error={errors.password?true:false}
-
-              />
-            {errors.password?(
+            placeholder="example@example.example"
+            name="email"
+            error={errors.email ? true : false}
+          />
+          {errors.email ? (
             <Typography
-            variant="small"
-            color="red"
-            className="mt-2 flex items-center  gap-1 font-normal"
+              variant="small"
+              color="green"
+              className="mt-2 flex items-center  gap-1 font-normal"
+            >
+              {errors.email}
+            </Typography>
+          ) : (
+            ""
+          )}
+        </div>
+        <div className="max-w-[70%] my-4 mx-auto">
+          <Input
+            onChange={handleInput}
+            label="password "
+            type="password"
+            size="lg"
+            placeholder="password"
+            name="password"
+            error={errors.password ? true : false}
+          />
+          {errors.password ? (
+            <Typography
+              variant="small"
+              color="green"
+              className="mt-2 flex items-center  gap-1 font-normal"
+            >
+              {errors.password}
+            </Typography>
+          ) : (
+            ""
+          )}
+        </div>
+
+        <div className="max-w-[70%] my-4 mx-auto">
+          <Input
+            onChange={handleInput}
+            label="re-enter password "
+            type="password"
+            size="lg"
+            placeholder="password"
+            name="rePassword"
+            error={errors.rePassword ? true : false}
+          />
+          {errors.rePassword ? (
+            <Typography
+              variant="small"
+              color="green"
+              className="mt-2 flex items-center  gap-1 font-normal"
+            >
+              {errors.rePassword}
+            </Typography>
+          ) : (
+            ""
+          )}
+        </div>
+
+        <Button
+          className="w-full md:max-w-[70%] mt-6 bg-green-500 text-white"
+          type="submit"
         >
-    
-            {errors.password}
-        </Typography>
-            ):''}
-              
-        </div>
-
-        <div className='max-w-[70%] my-4 mx-auto'>
-            <Input   
-            onChange={handleInput}
-            label='re-enter password ' 
-            type="password" 
-            size="lg"
-              placeholder="********" 
-              name='rePassword'
-             error={errors.rePassword?true:false}
-
-              />
-            {errors.rePassword?(
-            <Typography
-            variant="small"
-            color="red"
-            className="mt-2 flex items-center  gap-1 font-normal"
-            >
-    
-            {errors.rePassword}
-        </Typography>
-            ):''}
-        </div>
- 
-
-        <Button className='w-full max-w-[70%] mt-6' type='submit' >
-            {isLoading? <Spinner className='mx-auto' /> : <span>Signup</span> }
+          {isLoading ? <Spinner className="mx-auto" /> : <span>Signup</span>}
         </Button>
-    </form>
+      </form>
 
-    <Typography color="gray" className="my-4 text-center font-normal">
-    already have  an account?
-        <NavLink to='/'><a href="#" className="font-medium text-gray-900" > Login</a></NavLink>
-    </Typography>
-
+      <Typography color="green" className="my-4 text-center font-normal">
+        already have an account?
+        <NavLink to="/">
+          <a href="#" className="font-medium text-gray-900">
+            {" "}
+            Login
+          </a>
+        </NavLink>
+      </Typography>
     </FormContainer>
-      
-  )
+  );
 }
 
 export default RegisterScreen

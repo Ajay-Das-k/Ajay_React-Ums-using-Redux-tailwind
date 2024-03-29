@@ -8,7 +8,6 @@ import {
   MenuList,
   MenuItem,
   Avatar,
-  Card,
   IconButton,
 } from "@material-tailwind/react";
 import {
@@ -46,7 +45,6 @@ const profileMenuItems = [
   },
   {
     label: "Sign Out",
-    
     icon: PowerIcon,
   },
 ];
@@ -167,10 +165,16 @@ export function ComplexNavbar() {
           <Bars2Icon className="h-6 w-6" />
         </IconButton>
 
-        {userInfo.isAdmin && (
+        {userInfo.isAdmin ? (
           <NavLink to="/adminDashboard">
             <Button size="sm" variant="text">
               <span>Dashboard</span>
+            </Button>
+          </NavLink>
+        ) : (
+          <NavLink to="/">
+            <Button size="sm" variant="text">
+              <span>Home</span>
             </Button>
           </NavLink>
         )}

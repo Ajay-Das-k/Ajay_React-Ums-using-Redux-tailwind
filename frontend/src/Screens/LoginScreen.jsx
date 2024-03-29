@@ -42,13 +42,13 @@ function LoginScreen() {
             setPasword(value)
             const passwordErrors = [];
             if (value.length < 8) {
-            passwordErrors.push('*password must be at least 8 characters long');
+            passwordErrors.push('password must be at least 8 characters long');
             }
             if (!/\d/.test(value)) {
-            passwordErrors.push('*password must contain at least one digit');
+            passwordErrors.push('password must contain at least one digit');
             }
             if (!/[a-z]/.test(value) && !/[A-Z]/.test(value)) {
-            passwordErrors.push('*password must contain at least one letter');
+            passwordErrors.push('password must contain at least one letter');
             }
             if (passwordErrors.length > 0) {
             setErrors((prevErrors) => ({ ...prevErrors, password: passwordErrors.join('\n') }));
@@ -131,7 +131,7 @@ function LoginScreen() {
             label="password"
             type="password"
             size="lg"
-            placeholder="********"
+            placeholder="password"
             name="password"
             error={errors.password ? true : false}
           />
