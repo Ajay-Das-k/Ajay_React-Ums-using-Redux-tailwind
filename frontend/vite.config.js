@@ -8,7 +8,7 @@ export default defineConfig({
     port:3000,
     proxy:{
       '/api':{ 
-        target:'http://localhost:5000',
+        target:'https://ajay-react-ums-using-redux-tailwind.onrender.com/:5000',
         changeOrigin:true
       }
     } 
