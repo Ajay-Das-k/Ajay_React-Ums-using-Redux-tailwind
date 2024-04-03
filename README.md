@@ -1,6 +1,6 @@
 # MERN Auth using Redux and JWT
 
-<img src="drawing.jpg" alt="drawing" width="200"/>
+<img src="drawing.jpg" alt="drawing" width="500"/>
 
 This project is a full-stack authentication system built using the MERN stack (MongoDB, Express, React, Node.js) along with Redux for state management and JSON Web Tokens (JWT) for authentication.
 
